@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/7f0cbabdf7.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/styles.css">
+    <link rel="stylesheet" href="/assets/css/tablet.css" media="(min-width: 425px)">
+    <link rel="stylesheet" href="/assets/css/desktop.css" media="(min-width: 770px)">
+    <title>Pomodoro</title>
+</head>
+<body>
+    <header>
+        <div class="title">
+            <div class="title-img"> <i class="fa fa-solid fa-check"></i></div>
+            <h1 class="primary_tittle"></i>Pomodoro</h1>
+        </div>
+        <div class="menu">
+            <button class="buttonStyle"><span><i class="fa fa-solid fa-gear"></i></span></button>
+            <button class="buttonStyle"><span><i class="fa fa-solid fa-user"></i></span></button>
+        </div>
+    </header>
+    <main>
+        <div class="container_clock">
+            <div class="time_specific">
+                <button class="buttonStyle time_specific_pomodoro">Pomodoro</button>
+                <button class="buttonStyle time_specific_break ">Short Break</button>
+                <button class="buttonStyle time_specific_long_break ">Long Break</button>
+            </div>
+            <div class="time_current"></div>
+            <button value="Start" class="time_button_start buttonStyle">Start</button>
+        </div>
+        <div class="container_task">
+            <div class="container_task_tittle">
+                <h3 class="second_tittle">Tasks</h3>
+                <button class="buttonStyle"><i class="fa fa-solid fa-gear"></i></button>
+            </div>
+            <div class="container_task_items">
+                <div class="task"><button class="buttonStyle"><i class="fa fa-solid fa-check"></i></button>Task 1</div>
+                <div class="task"><button class="buttonStyle"><i class="fa fa-solid fa-check"></i></button>Task 2</div>
+                <div class="task"><button class="buttonStyle"><i class="fa fa-solid fa-check"></i></button>Task 3</div>
+            </div>
+            <button class="container_task_add buttonStyle"><i class=" fa fa-solid fa-plus"></i>Add Task</button>
+        </div>
+    </main>
+<script src="/assets/js/main.js"></script>
+</body>
+</html>

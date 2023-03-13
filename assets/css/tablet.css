@@ -1,0 +1,9 @@
+.container_clock{
+    width: 70vw;
+}
+.container_clock .time_specific{
+    max-width: 450px;
+}
+.container_clock .time_specific .buttonStyle, .time_button_start{
+    max-width: 250px;
+}

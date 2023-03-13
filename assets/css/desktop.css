@@ -1,0 +1,13 @@
+header{
+    max-width: 750px;
+}
+.container_clock{
+    max-width: 500px;
+}
+.container_task{
+    max-width: 600px;
+}
+.container_clock .time_specific button{
+    font-size: 0.7rem;
+    padding: 0.3rem;
+}
