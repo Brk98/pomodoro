@@ -37,16 +37,16 @@ let time = calculateTime(minutes);
 function start() {
   updateTime();
   currentTimeStyle(btnsPomo[pomo_cycle[currentPomo]])
-    if (btn_start.innerHTML === 'Start') {
-      timerInterval = setInterval(updateCountDown, 1000);
+  if (btn_start.innerHTML === 'Start') {
+    timerInterval = setInterval(updateCountDown, 1000);
       btn_start.innerHTML = 'Pause';
     } else {
       clearInterval(timerInterval);
       btn_start.innerHTML = 'Start';
     }
   }
-
-function updateCountDown(){
+  
+  function updateCountDown(){
     if(!time==0){
         time--;
         let minutes = Math.floor(time/60);
@@ -59,11 +59,12 @@ function updateCountDown(){
       currentPomo == 7 ? currentPomo=0 : currentPomo++;
       btn_start.innerHTML = 'Start';
       updateTime();
-        currentTimeStyle(btnsPomo[pomo_cycle[currentPomo]])
+      currentTimeStyle(btnsPomo[pomo_cycle[currentPomo]])
+      updateCustomTime(minutes);
     }
-}
+  }
 
-function calculateTime(minutes){
+  function calculateTime(minutes){
     let time = minutes * 60;
     return time;
 }
@@ -73,7 +74,6 @@ function currentTimeStyle(btn){
   brkShort.classList.remove('time-selected');
   brkLong.classList.remove('time-selected');
   btn.classList.add('time-selected');
-  updateCustomTime(minutes);
 }
 
 function updateCustomTime(minutes){
