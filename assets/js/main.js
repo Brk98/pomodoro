@@ -29,7 +29,13 @@ btn_start.addEventListener('click',start);
 let currentPomo = 0;
 let timerInterval;
 let minutes = cycle[pomo_cycle[currentPomo]];
+//User click on especific timecycle
+btnsPomo.shortBreak.addEventListener('click',shortBreakClick);
+btnsPomo.longBreak.addEventListener('click',longBreakClick);
+btnsPomo.pomo.addEventListener('click',pomoClick);
+
 //update custom time
+
 updateCustomTime(minutes);
 
 let time = calculateTime(minutes);
@@ -49,10 +55,7 @@ function start() {
   function updateCountDown(){
     if(!time==0){
         time--;
-        let minutes = Math.floor(time/60);
-        let seconds = time % 60;
-        seconds = seconds < 10 ? '0' + seconds : seconds;
-        timer.innerHTML = `${minutes}:${seconds}`; 
+        updateTimeStyle();
     }else{
       clearInterval(timerInterval);
       pomoEndSound.play();
@@ -86,4 +89,54 @@ function updateTime(){
     minutes = cycle[pomo_cycle[currentPomo]];
     time = calculateTime(minutes);
   }
+}
+
+function updateTimeonClick(){
+  minutes = cycle[pomo_cycle[currentPomo]];
+  time = calculateTime(minutes);
+}
+
+function shortBreakClick(){
+  if(!(pomo_cycle[currentPomo] == 'shortBreak')){
+    if(pomo_cycle[currentPomo] == 'longBreak'){
+      currentPomo = 0;
+    }
+    currentPomo++;
+    currentTimeStyle(btnsPomo.shortBreak);
+    updateTimeonClick();
+    calculateTime();
+    updateTimeStyle();
+  }
+}
+
+function longBreakClick(){
+  if(!(pomo_cycle[currentPomo] == 'longBreak')){
+    currentPomo=7;
+    currentTimeStyle(btnsPomo.longBreak);
+    updateTimeonClick();
+    calculateTime();
+    updateTimeStyle();
+  }
+}
+
+function pomoClick(){
+  if(!(pomo_cycle[currentPomo] == 'pomo')){
+    if(pomo_cycle[currentPomo]=='longBreak'){
+      currentPomo=0;
+    }
+    if(pomo_cycle[currentPomo]== 'shortBreak'){
+      currentPomo++;
+    }
+    updateTimeonClick();
+    calculateTime();
+    updateTimeStyle();
+  }
+  currentTimeStyle(btnsPomo.pomo);
+}
+
+function updateTimeStyle(){
+  let minutes = Math.floor(time/60);
+  let seconds = time % 60;
+  seconds = seconds < 10 ? '0' + seconds : seconds;
+  timer.innerHTML = `${minutes}:${seconds}`;
 }
