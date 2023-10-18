@@ -7,3 +7,12 @@
 .container_clock .time_specific .buttonStyle, .time_button_start{
     max-width: 250px;
 }
+
+/* setting modal */
+.modalsettings{
+    width: 80%;
+}
+.modalsettings .timespomo input{
+    width: 25%;
+    height: 1.4rem;
+}

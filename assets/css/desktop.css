@@ -52,3 +52,34 @@ iframe{
     width: 50%;
     height: 152px;
 }
+
+/* setting modal */
+.modalsettings{
+    width: 50%;
+}
+.modalsettings .themes{
+    justify-content: center;
+}
+.modalsettings .themes button{
+    padding: 0.5rem;
+    margin: 1rem;
+}
+.modalsettings h2{
+    padding-top: 0.5rem;
+    padding-bottom: 0.2rem;
+}
+.modalsettings .timespomo input{
+    width: 25%;
+    height: 1.4rem;
+}
+.modalsettings .musicLists{
+    width: 100%;
+    display: grid;
+    grid-template-columns: minmax(0,1fr) minmax(0,1fr) minmax(0,1fr) minmax(0,1fr);
+    gap: 0.5rem;
+    padding: 1rem;
+}
+
+.modalsettings .musicLists .playlistSpotify{
+    min-height: 150px;
+}

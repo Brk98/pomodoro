@@ -9,8 +9,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/styles.css">
-    <link rel="stylesheet" href="assets/css/tablet.css" media="(min-width: 425px)">
-    <link rel="stylesheet" href="assets/css/desktop.css" media="(min-width: 770px)">
+    <link rel="stylesheet" href="assets/css/tablet.css" media="(min-width: 700px)">
+    <link rel="stylesheet" href="assets/css/desktop.css" media="(min-width: 990px)">
     <title>Pomodoro</title>
 </head>
 <body>
@@ -20,8 +20,7 @@
             <h1 class="primary_tittle"></i>Pomodoro</h1>
         </div>
         <div class="menu">
-            <button class="buttonStyle"><span><i class="fa fa-solid fa-gear"></i></span></button>
-            <button class="buttonStyle"><span><i class="fa fa-solid fa-user"></i></span></button>
+            <button class="buttonStyle settingsbtn"><span><i class="fa fa-solid fa-gear"></i></span></button>
         </div>
     </header>
     <main>
@@ -65,7 +64,44 @@
             </div>
         </div>
     </div>
+    <div class="modalcontainer settings noDisplay">
+
+        <div class="modalsettings">
+            <button class="buttonStyle closeModal settingsClose">X</button>
+            <h2>Theme</h2>
+            <div class="themes">
+                <button class="buttonStyle lightMode"><i class="fa fa-solid fa-sun"></i>Light mode</button>
+                <button class="buttonStyle darkMode"><i class="fa fa-solid fa-moon"></i>Dark mode</button>
+            </div>
+            <h2>Time pomo cycle</h2>
+            <div class="timespomo">
+                <div class="pomotime">
+                    <label for="pomodoroTime">Pomodoro</label>
+                    <input type="number" name="Pomodoro" id="pomodoroTime" min="1">
+                </div>
+                <div class="pomotime">
+                    <label for="shortBreakTime">Short Break</label>
+                    <input type="number" name="Short Break" id="shortBreakTime" min="1">
+                </div>
+                <div class="pomotime">
+                    <label for="longBreakTime">Long Break</label>
+                    <input type="number" name="Long Break" id="longBreakTime" min="1">
+                </div>
+                <button class="buttonStyle">Save</button>
+            </div>
+            <h2>PlayLists Spotify</h2>
+            <div class="musicLists">
+                <div class="playlistSpotify">
+                    <div class="playlist">
+                        <h3>Genre</h3>
+                        <div class="imagenPlaylist"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 <script src="assets/js/main.js"></script>
 <script src="assets/js/tasks.js"></script>
+<script src="assets/js/settings.js"></script>
 </body>
 </html>
