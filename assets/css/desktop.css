@@ -44,3 +44,11 @@ header{
     margin-top: 1rem;
     padding: 0.8rem 3rem;
 }
+
+/* spotify */
+iframe{
+    display: block;
+    margin: 0 auto;
+    width: 50%;
+    height: 152px;
+}
