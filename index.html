@@ -37,16 +37,33 @@
         <div class="container_task">
             <div class="container_task_tittle">
                 <h3 class="second_tittle">Tasks</h3>
-                <button class="buttonStyle"><i class="fa fa-solid fa-gear"></i></button>
+                <button class="buttonStyle deleteAllTasks">Clear all</button>
             </div>
             <div class="container_task_items">
-                <div class="task"><button class="buttonStyle"><i class="fa fa-solid fa-check"></i></button>Task 1</div>
-                <div class="task"><button class="buttonStyle"><i class="fa fa-solid fa-check"></i></button>Task 2</div>
-                <div class="task"><button class="buttonStyle"><i class="fa fa-solid fa-check"></i></button>Task 3</div>
+                <!-- <div class="task"> <button class="buttonStyle taskreadyBtn"><i class="fa fa-solid fa-check"></i></button>Task 1<i class="fa fa-solid fa-trash trashTask"></i></div> -->
             </div>
             <button class="container_task_add buttonStyle"><i class=" fa fa-solid fa-plus"></i>Add Task</button>
         </div>
     </main>
+    <div class="modalcontainer noDisplay">
+        <div class="modalTask">
+            <button class="buttonStyle closeModal">X</button>
+            <label class="labelTaskName" for="taskName">Task Name:</label>
+            <input type="text" name="Task name" class="taskName" id="taskName">
+            <button class="addNewTask buttonStyle">Add task</button>
+            <p class="taskEmpty noDisplay">!Add a task name...</p>
+        </div>
+    </div>
+    <div class="modalcontainer tasks noDisplay">
+        <div class="modalTaskDelete">
+            <p>Are you sure you want to delete all tasks?</p>
+            <div class="btnsContainer">
+                <button class="buttonStyle deleteTasks">Delete</button>
+                <button class="buttonStyle cancelTask">Cancel</button>
+            </div>
+        </div>
+    </div>
 <script src="/assets/js/main.js"></script>
+<script src="/assets/js/tasks.js"></script>
 </body>
 </html>
