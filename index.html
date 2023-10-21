@@ -43,8 +43,10 @@
             </div>
             <button class="container_task_add buttonStyle"><i class=" fa fa-solid fa-plus"></i>Add Task</button>
         </div>
-        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/0vvXsWCC9xrXsKd4FyS8kM?utm_source=generator&theme=0" 
-        width="50%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        <div class="containerPlayer">
+            <iframe class="frame" style="border-radius:12px" src="https://open.spotify.com/embed/playlist/0vvXsWCC9xrXsKd4FyS8kM?utm_source=generator&theme=0" 
+            width="50%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        </div>
     </main>
     <div class="modalcontainer noDisplay">
         <div class="modalTask">
@@ -87,18 +89,22 @@
                     <label for="longBreakTime">Long Break</label>
                     <input type="number" name="Long Break" id="longBreakTime" min="1">
                 </div>
-                <button class="buttonStyle">Save</button>
+                <button class="buttonStyle saveTimes">Save</button>
+                <p class="success noDisplay">Times updated successfully</p>
             </div>
             <h2>PlayLists Spotify</h2>
             <div class="musicLists">
-                <div class="playlistSpotify">
+                <!-- <div class="playlistSpotify">
                     <div class="playlist">
                         <h3>Genre</h3>
                         <div class="imagenPlaylist"></div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
+    </div>
+    <div class="doNotLoad noDisplay">
+        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZEVXbO3qyFxbkOE1?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
     </div>
 <script src="assets/js/main.js"></script>
 <script src="assets/js/tasks.js"></script>
