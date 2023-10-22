@@ -1,16 +1,11 @@
 // pomodoro
 //Cycle of pomo this is what I denied
 const pomo_cycle = ['pomo', 'shortBreak','pomo', 'shortBreak','pomo', 'shortBreak','pomo', 'longBreak'];
-//Time in munutes for each cycle
-const cycle = {
-   pomo: 25,
-   shortBreak: 5,
-   longBreak: 15,
-}
 //I get the buttoms related with the tuimer
 const pomo = document.querySelector('.time_specific_pomodoro');
 const brkShort = document.querySelector('.time_specific_break');
 const brkLong = document.querySelector('.time_specific_long_break');
+
 const btnsPomo = {
   pomo: document.querySelector('.time_specific_pomodoro'),
   shortBreak : document.querySelector('.time_specific_break'),

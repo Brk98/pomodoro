@@ -4,6 +4,8 @@ const closeModalSettings = document.querySelector('button.settingsClose');
 const btnlightMode = document.querySelector('.lightMode');
 const btnDarkMode = document.querySelector('.darkMode');
 
+//variables for local storage
+let = actualPlaylist = 0;
 //Time nodes
 const inputPomodoro = document.querySelector('#pomodoroTime');
 const inputShortBreak = document.querySelector('#shortBreakTime');
@@ -17,6 +19,51 @@ const messageUnsucces = document.querySelector('.unsuccess');
 //PLaylists
 const containerPlaylist = document.querySelector('.musicLists');
 
+//Playlist
+const playlists = [
+    {
+        image: "https://i.scdn.co/image/ab67706c0000da84f396bdf13f6473f86bf4e2c0",
+        name: "Lofi Girl",
+        linkweb: "https://open.spotify.com/embed/playlist/0vvXsWCC9xrXsKd4FyS8kM?utm_source=generator&theme=0"
+    },
+    {
+        image: "https://charts-images.scdn.co/assets/locale_en/regional/daily/region_mx_default.jpg",
+        name: "Top 50 Mexico",
+        linkweb: "https://open.spotify.com/embed/playlist/37i9dQZEVXbO3qyFxbkOE1?utm_source=generator&theme=0"
+    },
+    {
+        image: "https://i.scdn.co/image/ab67706f00000002e4a325110ef153a1e8aef7cb",
+        name: "Lecture",
+        linkweb: "https://open.spotify.com/embed/playlist/37i9dQZF1DX9MDcH3vBMo0?utm_source=generator&theme=0"
+    },
+    {
+        image: "https://i.scdn.co/image/ab67706c0000da84cee227f257622d54622ba9e1",
+        name: "Rock",
+        linkweb: "https://open.spotify.com/embed/playlist/5EWhuzXkbTRDcv0ckRosuV?utm_source=generator&theme=0"
+    },
+    {
+        image: "https://i.scdn.co/image/ab67706c0000da84d492f3751e294408c36a8bbc",
+        name: "Electro",
+        linkweb: "https://open.spotify.com/embed/playlist/2MbkmdADBKOpJOGOMC5CGr?utm_source=generator"
+    },
+    {
+        image: "https://charts-images.scdn.co/assets/locale_en/regional/daily/region_global_default.jpg",
+        name: "Top 50 Global",
+        linkweb: "https://open.spotify.com/embed/playlist/37i9dQZEVXbMDoHDwVN2tF?utm_source=generator&theme=0"
+    },
+    {
+        image: "https://i.scdn.co/image/ab67706f00000002ddc9dd3c97091ccc4b3fa7e0",
+        name: "Pop",
+        linkweb: "https://open.spotify.com/embed/playlist/37i9dQZF1DX1ngEVM0lKrb?utm_source=generator&theme=0"
+    },
+    {
+        image: "https://i.scdn.co/image/ab67706f0000000287bff188c40608c48b82068f",
+        name: "Rap (Drake)",
+        linkweb: "https://open.spotify.com/embed/playlist/37i9dQZF1DX7QOv5kjbU68?utm_source=generator&theme=0"
+    },
+];
+//load the theme from LocalStorage
+changeTheme(data.theme);
 
 btnSettings.addEventListener('click',()=>{
     modalSettings.classList.remove('noDisplay');
@@ -28,18 +75,29 @@ closeModalSettings.addEventListener('click',()=>{
 });
 
 btnlightMode.addEventListener('click',function(){
-    document.documentElement.style.setProperty('--backgoung-color', 'var(--backgoung-color_light)');
-    document.documentElement.style.setProperty('--second-color', 'var(--second-color_light)');
-    document.documentElement.style.setProperty('--third-color', 'var(--third-color_light)');
-    document.documentElement.style.setProperty('--letter-color', 'var(--letter-color_light)');
+    data.theme = 'light'
+    changeTheme(data.theme);
 });
 btnDarkMode.addEventListener('click',function(){
-    document.documentElement.style.setProperty('--backgoung-color', 'var(--backgoung-color_dark)');
-    document.documentElement.style.setProperty('--second-color', 'var(--second-color_dark)');
-    document.documentElement.style.setProperty('--third-color', 'var(--third-color_dark)');
-    document.documentElement.style.setProperty('--letter-color', 'var(--letter-color_dark)');
+    data.theme = 'dark'
+    changeTheme(data.theme);
 });
-
+  //function to change the theme
+  function changeTheme(theme){
+    //save theme on localStorage
+    localStorage.setItem('data',JSON.stringify(data));
+    if(theme == 'light'){
+        document.documentElement.style.setProperty('--backgoung-color', 'var(--backgoung-color_light)');
+        document.documentElement.style.setProperty('--second-color', 'var(--second-color_light)');
+        document.documentElement.style.setProperty('--third-color', 'var(--third-color_light)');
+        document.documentElement.style.setProperty('--letter-color', 'var(--letter-color_light)');
+    }else{
+        document.documentElement.style.setProperty('--backgoung-color', 'var(--backgoung-color_dark)');
+        document.documentElement.style.setProperty('--second-color', 'var(--second-color_dark)');
+        document.documentElement.style.setProperty('--third-color', 'var(--third-color_dark)');
+        document.documentElement.style.setProperty('--letter-color', 'var(--letter-color_dark)');
+    }
+}
 function chargeData(){
     inputPomodoro.value = cycle.pomo;
     inputShortBreak.value = cycle.shortBreak;
@@ -74,7 +132,7 @@ function saveChanges(){
             cycle.pomo = inputPomodoro.value;
             cycle.shortBreak =  inputShortBreak.value;
             cycle.longBreak =  inputLongBreak.value;
-        
+            
             currentPomo = 0;
             minutes = cycle[pomo_cycle[currentPomo]];
             start(true);
@@ -84,6 +142,12 @@ function saveChanges(){
             setTimeout(function(){
                 messageSucces.classList.add('noDisplay');
             },1000);
+            //Save on local storage
+            data.cycle.pomo = inputPomodoro.value;
+            data.cycle.shortBreak = inputShortBreak.value;
+            data.cycle.longBreak = inputLongBreak.value;
+            localStorage.setItem('data',JSON.stringify(data));
+
         }else{
             alert("Please enter positive numbers only.");
         }
@@ -93,49 +157,7 @@ function saveChanges(){
 // spotify section
 function playListSpotify(){
     containerPlaylist.innerHTML="";
-    const playlists = [
-        {
-            image: "https://i.scdn.co/image/ab67706c0000da84f396bdf13f6473f86bf4e2c0",
-            name: "Lofi Girl",
-            linkweb: "https://open.spotify.com/embed/playlist/0vvXsWCC9xrXsKd4FyS8kM?utm_source=generator&theme=0"
-        },
-        {
-            image: "https://charts-images.scdn.co/assets/locale_en/regional/daily/region_mx_default.jpg",
-            name: "Top 50 Mexico",
-            linkweb: "https://open.spotify.com/embed/playlist/37i9dQZEVXbO3qyFxbkOE1?utm_source=generator&theme=0"
-        },
-        {
-            image: "https://i.scdn.co/image/ab67706f00000002e4a325110ef153a1e8aef7cb",
-            name: "Lecture",
-            linkweb: "https://open.spotify.com/embed/playlist/37i9dQZF1DX9MDcH3vBMo0?utm_source=generator&theme=0"
-        },
-        {
-            image: "https://i.scdn.co/image/ab67706c0000da84cee227f257622d54622ba9e1",
-            name: "Rock",
-            linkweb: "https://open.spotify.com/embed/playlist/5EWhuzXkbTRDcv0ckRosuV?utm_source=generator&theme=0"
-        },
-        {
-            image: "https://i.scdn.co/image/ab67706c0000da84d492f3751e294408c36a8bbc",
-            name: "Electro",
-            linkweb: "https://open.spotify.com/embed/playlist/2MbkmdADBKOpJOGOMC5CGr?utm_source=generator"
-        },
-        {
-            image: "https://charts-images.scdn.co/assets/locale_en/regional/daily/region_global_default.jpg",
-            name: "Top 50 Global",
-            linkweb: "https://open.spotify.com/embed/playlist/37i9dQZEVXbMDoHDwVN2tF?utm_source=generator&theme=0"
-        },
-        {
-            image: "https://i.scdn.co/image/ab67706f00000002ddc9dd3c97091ccc4b3fa7e0",
-            name: "Pop",
-            linkweb: "https://open.spotify.com/embed/playlist/37i9dQZF1DX1ngEVM0lKrb?utm_source=generator&theme=0"
-        },
-        {
-            image: "https://i.scdn.co/image/ab67706f0000000287bff188c40608c48b82068f",
-            name: "Rap (Drake)",
-            linkweb: "https://open.spotify.com/embed/playlist/37i9dQZF1DX7QOv5kjbU68?utm_source=generator&theme=0"
-        },
-    ];
-    playlists.forEach(playlist => {
+    playlists.forEach((playlist, index) => {
         const mainContainer = document.createElement('div');
         mainContainer.classList.add('playlistSpotify');
         const container = document.createElement('div');
@@ -149,13 +171,13 @@ function playListSpotify(){
         container.appendChild(image);
         mainContainer.appendChild(container);
         mainContainer.addEventListener('click',function(){
-            changePlayList(playlist.linkweb);
+            changePlayList(playlist.linkweb, index);
         });
         containerPlaylist.appendChild(mainContainer);
     });
 }
 
-function changePlayList(link){
+function changePlayList(link, index){
     const main = document.querySelector('.containerPlayer');
     main.innerHTML="";
 
@@ -179,5 +201,6 @@ function changePlayList(link){
     iframe.style.borderRadius = "12px";
 
     main.appendChild(iframe);
+    console.log(index);
 
 }

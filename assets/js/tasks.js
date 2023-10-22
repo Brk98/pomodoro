@@ -36,40 +36,41 @@ addTask.addEventListener('click',addNewTask);
 function addNewTask(){
     if(!(taskName.value == "")){
         //create task
-    const divContainer = document.createElement('div');
-    divContainer.classList.add('task');
-    const  btnTask = document.createElement('button');
-    btnTask.classList.add('buttonStyle','taskreadyBtn');
-    const icon = document.createElement('i');
-    icon.classList.add("fa","fa-solid","fa-check");
-    const iconDeleteTask = document.createElement('i');
-    iconDeleteTask.classList.add('fa','fa-solid','fa-trash','trashTask');
-    
-    
-    btnTask.appendChild(icon);
-    divContainer.appendChild(btnTask);
-    containerTask.appendChild(divContainer);
-    //Add funciton to mark as ready
-    btnTask.addEventListener('click',function(){
-        taskReady(divContainer);
-    })
-    
-    divContainer.append(taskName.value, iconDeleteTask);
+        const divContainer = document.createElement('div');
+        divContainer.classList.add('task');
+        const  btnTask = document.createElement('button');
+        btnTask.classList.add('buttonStyle','taskreadyBtn');
+        const icon = document.createElement('i');
+        icon.classList.add("fa","fa-solid","fa-check");
+        const iconDeleteTask = document.createElement('i');
+        iconDeleteTask.classList.add('fa','fa-solid','fa-trash','trashTask');
+        
+        
+        btnTask.appendChild(icon);
+        divContainer.appendChild(btnTask);
+        containerTask.appendChild(divContainer);
+        //Add funciton to mark as ready
+        btnTask.addEventListener('click',function(){
+            taskReady(divContainer);
+        })
+        divContainer.append(taskName.value, iconDeleteTask);
 
-    //Add function to delete a task
-    iconDeleteTask.addEventListener('click',function(){
-        deleteTasks(divContainer);
-    })
+        //Add function to delete a task
+        iconDeleteTask.addEventListener('click',function(){
+            deleteTasks(divContainer);
+        })
 
+        //save on local storage
+        data.tasks.push(taskName.value);
 
-    //Close the modal
-    modalTask.classList.add('noDisplay');
-    //Remove message of taskName empty
-    imputEmpty.classList.add('noDisplay');
+        //Close the modal
+        modalTask.classList.add('noDisplay');
+        //Remove message of taskName empty
+        imputEmpty.classList.add('noDisplay');
 
-    }else{
-        imputEmpty.classList.remove('noDisplay');
-    }
+        }else{
+            imputEmpty.classList.remove('noDisplay');
+        }
     
 }
 
@@ -83,6 +84,7 @@ btnClearTasks.addEventListener('click',()=>{
         modalDeleteTasks.classList.remove('noDisplay'); 
     }
 });
+
 btnDeleteTasks.addEventListener('click',()=>{
     containerTask.innerHTML = "";
     modalDeleteTasks.classList.add('noDisplay');
